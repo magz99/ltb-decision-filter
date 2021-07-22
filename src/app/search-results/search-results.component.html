@@ -1,0 +1,14 @@
+<ion-virtual-scroll
+  [items]="filteredData"
+  approxItemHeight="140px"
+  [trackBy]="trackByName"
+>
+  <ion-card *virtualItem="let item">
+    <p>{{ item.styleOfCause }}</p>
+    <p>{{ item.citation }}</p>
+    <p>{{ item.judgmentDate }}</p>
+    <a [href]="'https://www.canlii.org' + item.url" target="_blank"
+      >View Decision Document</a
+    >
+  </ion-card>
+</ion-virtual-scroll>

@@ -1,17 +1,53 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title> LTB Decisions Search </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Tab 1 Test</ion-title>
     </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  </ion-header> -->
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12">
+        <!-- <ion-searchbar
+          placeholder="Enter a last name to search"
+          inputmode="text"
+          type="text"
+        ></ion-searchbar> -->
+        <ion-list lines="full" class="ion-no-margin">
+          <ion-item>
+            <ion-input
+              type="text"
+              placeholder="Enter a last name to filter"
+              [ngModel]="searchTerm"
+              #searchTermInput
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button expand="full" (click)="handleSearchClick(searchTermInput)"
+          >Filter Results</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-end">
+      <ion-col>
+        <ion-button
+          size="small"
+          color="tertiary"
+          *ngIf="searchTerm"
+          (click)="handleSearchClear()"
+          >Clear Results</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12">
+        <app-search-results [searchTerm]="searchTerm"></app-search-results>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
